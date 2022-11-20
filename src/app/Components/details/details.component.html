@@ -1,0 +1,39 @@
+<div class="container">
+
+
+<div class="row mt-5 ">
+  <div class="image col-md-6 p-3 ">
+    <img alt="" [src]="imgBase+mediaDetails.backdrop_path" class="w-100" >
+  </div>
+  <div class="post col-md-6 p-3">
+
+    <div class="title">
+      <h1  *ngIf="mediaType=='movie';else tvName">
+        {{mediaDetails.title}}
+      </h1>
+      <ng-template #tvName>
+        <h1>{{mediaDetails.name}}</h1>
+      </ng-template>
+    </div>
+
+
+    <h4 class="d-flex flex-wrap">
+      <span class=" text-dark fw-bold p-2 m-1 bg-info rounded" *ngFor="let item of mediaDetails.genres">{{item.name}}</span>
+    </h4>
+
+    <p class="mt-4  language bg-orange">{{mediaDetails.original_language |uppercase}}</p>
+    <p class="pt-2 bg-black p-2 ele"><span class="bg-primary p-2">Vote :</span> {{ mediaDetails.vote_average}}</p>
+    <p class="pt-2 bg-black p-2 ele"><span class="bg-primary p-2">Vote Count :</span> {{ mediaDetails.vote_count}}</p>
+    <p class="pt-2 bg-black p-2 ele"><span class="bg-primary p-2">Release Date  :</span> {{ mediaDetails.release_date}}</p>
+    <p class="pt-2 bg-black p-2 ele"><span class="bg-primary p-2">Popularity  :</span> {{ mediaDetails.popularity}}</p>
+    <p class="pt-2 bg-black p-2 ele" *ngIf="mediaDetails.revenue"><span class="bg-primary p-2">Revenue  :</span> {{ mediaDetails.revenue}} $</p>
+    <h6>{{mediaDetails.overview}}</h6>
+
+  </div>
+
+
+
+
+</div>
+
+</div>

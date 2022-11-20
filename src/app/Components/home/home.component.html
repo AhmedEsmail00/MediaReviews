@@ -1,0 +1,56 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<!-- <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#9d354f" type = "timer" [fullScreen] = "false"><p style="color: white" > Loading... </p></ngx-spinner> -->
+
+<div class="">
+  <owl-carousel-o [options]="customOptions" >
+
+    <ng-container *ngFor="let item of moviesList" >
+      <ng-template carouselSlide [id]="item.id">
+        <img [src]="imgBase+item.backdrop_path"   routerLink='/details/movie/{{item.id}}' class="w-100 h-100 slider">
+      </ng-template>
+    </ng-container>
+
+  </owl-carousel-o>
+</div>
+
+<div class="row my-5">
+<input class="form-control text-white bg-transparent" type="text" placeholder=" Search by name" [(ngModel)]="searchValue">
+
+    <div class="trending col-md-4 col-12 my-3">
+      <div class="brd w-25 my-2"></div>
+      <h3>Trending</h3>
+      <h3>Movies</h3>
+      <h3>To Watch Now</h3>
+      <p>Most Watched Movies By Days</p>
+      <div class="brd w-100 "></div>
+    </div>
+
+    <div class="post col-md-4 col-12 my-3 h-50" *ngFor="let item of moviesList|search:searchValue" >
+      <div class="myImg">
+        <img [src]="imgBase+item.backdrop_path" class="w-100"  routerLink='/details/movie/{{item.id}}'>
+      </div>
+        <h4 class="h6">{{item.title | lowercase}}</h4>
+        <!-- <h4 class="text-muted">{{amount | currency:'EUR'}}</h4> -->
+        <p class="text-muted" #myOverView>
+          {{item.overview | seeMore:10}}
+        </p>
+    </div>
+    <hr>
+    <div class="trending col-md-4 col-12 my-3" >
+      <div class="brd w-25 my-2"></div>
+      <h3>Trending</h3>
+      <h3>TV</h3>
+      <h3>To Watch Now</h3>
+      <p>Most Watched TV By Days</p>
+      <div class="brd w-100 "></div>
+    </div>
+
+    <div class="post col-md-4 col-12 my-3" *ngFor="let item of TVList" routerLink="/details/tv/{{item.id}}">
+      <div class="myImg">
+        <img [src]="imgBase+item.backdrop_path" class=" w-100">
+      </div>
+        <h4 class="h6">{{item.name}}</h4>
+    </div>
+
+  </div>
+

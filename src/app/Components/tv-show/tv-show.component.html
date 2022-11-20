@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row my-5">
+
+    <div class="trending col-md-4 my-3">
+      <div class="brd w-25 my-2"></div>
+      <h3>Trending</h3>
+      <h3>TV</h3>
+      <h3>To Watch Now</h3>
+      <p>Most Watched TV By Days</p>
+      <div class="brd w-100 "></div>
+    </div>
+
+    <div class="post col-md-4  col-12 my-3 " *ngFor="let item of TVList" routerLink="/details/tv/{{item.id}}" >
+      <div class="myImg">
+        <img [src]="imgBase+item.backdrop_path" class="w-100">
+      </div>
+        <h4 class="h6">{{item.name}}</h4>
+    </div>
+
+  </div>
+</div>

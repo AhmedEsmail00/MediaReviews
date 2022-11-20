@@ -1,0 +1,64 @@
+
+<nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Media Reviews</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul  class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLinkActive="nav-active"  routerLink="home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="nav-active" routerLink="movies">Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="nav-active" routerLink="tvShow">Tv Show</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLinkActive="nav-active" routerLink="people">People</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLinkActive="nav-active" routerLink="networks"networks>NetWorks</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLinkActive="nav-active" routerLink="about">About</a>
+        </li>
+      </ul>
+
+      <!-- ********************************************************** -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <div class="social-icon d-flex align-items-center" >
+        <li class="fa fa-facebook fs-5"></li>
+        <li class="fa fa-spotify fs-5"></li>
+        <li class="fa fa-instagram fs-5"></li>
+        <li class="fa fa-youtube fs-5"></li>
+        </div>
+
+        <li class="nav-item dropdown " *ngIf="isLoggedIn">
+          <a routerLink="profile" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Profile
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item " routerLink="/profile/setting" (mouseover)="setting()"> Setting </a></li>
+            <li><a class="dropdown-item " routerLink="/profile/privacy" (mouseover)="privacy()"> Privacy </a></li>
+
+          </ul>
+        </li>
+
+        <li *ngIf="!isLoggedIn" class="nav-item">
+          <a class="nav-link" routerLinkActive="nav-active" routerLink="login">Login</a>
+        </li>
+        <li *ngIf="!isLoggedIn" class="nav-item">
+          <a class="nav-link"  routerLinkActive="nav-active" routerLink="register">Register</a>
+        </li>
+        <li (click)="logOut()" *ngIf="isLoggedIn" class="nav-item">
+          <a  class="nav-link"  routerLinkActive="nav-active" >Log Out</a>
+        </li>
+      </ul>
+
+
+    </div>
+  </div>
+</nav>
